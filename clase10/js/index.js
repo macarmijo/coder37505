@@ -39,75 +39,76 @@ let article = ""
 
 for(cancion of canciones){
    article += `<article class="box-song" >
-            <img src="${cancion.imgSrc}" alt="" class="img-song">
-            <div class="descripcion">
-                <p>${cancion.title}</p>
-                <p>${cancion.artist}</p>
-            </div>
-            <div class="fav"><svg id="${cancion.id}" class="unlike" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z"/></svg>
-            </div>
-        </article>`
+                    <img src="${cancion.imgSrc}" alt="" class="img-song">
+                    <div class="descripcion">
+                        <p>${cancion.title}</p>
+                        <p>${cancion.artist}</p>
+                    </div>
+                    <div class="fav">
+                        <svg id="${cancion.id}" class="unlike" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z"/></svg>
+                    </div>
+                </article>`
 }
 
 container.innerHTML += article
 
 let svgs = document.querySelectorAll('svg')
+let resultadosFav = document.querySelector('.resultados')
+let recuperoStorage = localStorage.getItem('favoritos')
 let favoritos = []
 
-for (svg of svgs){
-    svg.onclick = (e) => {
-        let element = e.target.parentElement
-        element.classList.toggle('like')
-        let id = element.attributes.id.value
-        console.log(id)
-        
-        let track = canciones.find(e => e.id == id)
-        favoritos.push(track)
-       
-        localStorage.setItem('favoritos', favoritos)
+/* HAY DATOS dentro del storage */
+if(recuperoStorage != null){
+    favoritos = JSON.parse(recuperoStorage)
+    console.log(favoritos)
+    mostrarYGuardarCanciones()
 
+}else{ /* NO hay datos dentro del storage */
+    mostrarYGuardarCanciones()
+}
+
+// querySelector puede recibir ID, CLass o por nombre de etiqueta
+
+function mostrarYGuardarCanciones(){
+    for (svg of svgs){
+        svg.onclick = (e) => {
+            
+            let element = e.target.parentElement
+            //element.classList.toggle('like')
+            let id = element.attributes.id.value
+            let track = canciones.find(e => e.id == id)
+            console.log(track)
+            
+            //antes de pushear el track voy a verificar si esta repetido
+            //Si existe el track en el storage
+            if(favoritos.includes(track)){
+                console.log('cancion repetida')
+                element.classList.remove('like')
+                //tengo que buscar donde esta el track por dentro del array que guarda la info del storage
+                //Con indexOf y splice
+                let trackASacar = favoritos.indexOf(track)
+                favoritos.splice(trackASacar, 1)
+                    // cuando quiero agarrar algo por queryselector si uso el atributo ID NO PUEDO pasarle un NUMERO . !!!
+
+                let trackRepetido = document.querySelector(`#id-${track.id}`)
+                resultadosFav.removeChild(trackRepetido)
+
+            }else{
+                console.log('no se repitio')
+                element.classList.add('like')
+                favoritos.push(track)
+
+                resultadosFav.innerHTML += `<article class="box-song" id="id-${track.id}">
+                        <img src="${track.imgSrc}" alt="" class="img-song">
+                        <div class="descripcion">
+                            <p>${track.title}</p>
+                            <p>${track.artist}</p>
+                        </div>
+                    </article>`
+            }
+            
+            localStorage.setItem('favoritos', JSON.stringify(favoritos))
+
+        }
     }
 }
-
-//LOCAL STORAGE y SESSION STORAGE
-//localstorage vive hasta que lo borramos --> SIN CONEXION CON UN SERVIDOR
-//Session Storage --> vive hasta que cerramos el navegador
-
-localStorage.setItem('Nombre', 'Maca') //ejecutando una funcion - mejor dicho un metodo del objeto localStorage
-
-localStorage.setItem('Apellido', 'Armijo')
-localStorage.setItem('dni', '213817491')
-//Clave es un string y el valor no necesita ser un string
-//el valor puede ser cualquier tipo de dato --- SIII puede recibir objetos.
-//console.log(localStorage)
-
-for(let i = 0 ; i < localStorage.length; i++){
-    let clave = localStorage.key(i)
-    //console.log(`para la clave: ${clave}, el valor es: ${localStorage.getItem(clave)}`)
-}
-
-let recuperoStorage = localStorage.getItem('Nombre')
-//console.log(typeof(recuperoStorage)) // DEVUELVE un STRING
-
-//Si quiero guardar algo en session --
-sessionStorage.setItem('ejemplo', 'GAnamos')
-let resucperoSession = sessionStorage.getItem('ejemplo')
-//console.log(resucperoSession)
-
-localStorage.removeItem('Nombre') //esto elimina los datos de UNA determinada KEY
-localStorage.clear() // esto borra TODO del storage
-
-//JSON --> formato basado en TEXTO PLANO
-//convertidor de objeto en string y viceversa para manipular tipos de datos como loq ue tengo en el storage
-
-const formatoJSON = JSON.stringify(canciones[0])
-//console.log(typeof(formatoJSON))
-//console.log(typeof(canciones[0]))
-
-//localStorage.setItem('canciones', formatoJSON)
-
-recuperoStorage = JSON.parse(localStorage.getItem('canciones'))
-//console.log(recuperoStorage)
-// cada vez que voy a buscar algo al storage, NECESITO convertirlo con JSON.parse -- cuando guardo algo en el storage lo convierto en string antes de guardarlo con JSON.stringify
-
-
