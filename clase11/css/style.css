@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+*{
+    box-sizing: border-box;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: inherit
+}
+body {
+  font-family: Inter, sans-serif;
+  background: rgb(25,23,54);
+  background: linear-gradient(90deg, rgba(25,23,54,0.8596171745065213) 0%, rgba(17,170,19,0.7475723565793505) 80%, rgba(255,255,255,1) 100%); 
+}
+.d-none{
+    display: none;
+}
+.d-inline-block{
+    display: inline-block;
+}
+
+.container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+img{
+    height: 100%;
+}
+
+.box-song{
+    height:10vh;
+    display: flex;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    background-color: rgba(240, 248, 255, 0.2);
+}
+
+.description{
+    margin-left: 10px;
+    min-width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+svg{
+    width: 35%;
+    height: 35%;
+}
+svg.unlike{
+    fill: transparent;
+    stroke: black;
+    stroke-width: 40px;
+}
+svg.liked{
+    fill: black;
+}
+
+.fav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+a>span{
+    background-color: rgba(240, 248, 255, 0.80);
+    border: 1px solid aliceblue;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+
+.resultados{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.box-favoritos{
+    width: 30vh;
+    display: flex;
+    border: 1px solid black;
+    margin-bottom: 10px
+}
+.box-favoritos img{
+    width: 50%;
+}
+
+/* https://cssgradient.io/ */
