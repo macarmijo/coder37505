@@ -1,0 +1,131 @@
+/* resetos */
+*{
+    box-sizing: border-box;
+}
+ol, ul{
+    padding: 0;
+}
+li {
+    list-style-type:none;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Estilos página Desktop first */
+body{
+    background-image: url('https://marketplace.canva.com/EAFGKWZ7S3c/1/0/1600w/canva-fondo-de-pantalla-caritas-felices-aesthetic-gradiente-morado-y-rosa-yuWW9A_crYQ.jpg');
+    margin: 0
+}
+main{
+    position: absolute;
+    z-index: -1;
+}
+header{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.access{
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+}
+.access li{
+    margin-right: 20px;
+}
+
+.logo{
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    width: 30%;
+}
+nav{
+    width: 95%;
+}
+
+.main-nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.main-nav li {
+    width: 16%;
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+.main{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 10px;
+    row-gap: 20px;
+    width: 85%;
+    margin: 0px auto 20px;
+}
+
+.product{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid  rgb(136, 136, 136, 0.4);
+    box-shadow: 3px 5px rgb(136, 136, 136, 0.3);
+    border-radius: 10px;
+    padding: 5% 10%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.product .imagen{
+    margin: auto;
+}
+img{
+    width: 100%;
+}
+
+.descripcion{
+    text-align: center;
+    width: 100%;
+}
+.descripcion h3{
+    font-size: 1rem;
+}
+.boton{
+    border: 1px solid rgb(57, 57, 57, 0.5);
+    border-radius: 10px;
+    padding: 10px 0;
+    font-size: .8rem;
+}
+.boton:hover{
+    background-color: rgb(96, 157, 136, 0.5);
+}
+/* POPUP */
+.popupDetalle{
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(128, 128, 128, 0.4);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popupDetalle>div{
+    background-color: white;
+    width: 50%;
+    padding: 20px 20px 50px;
+}
+.closePopup{
+    text-align: end;
+}
+.d-none{
+    display: none;
+}
