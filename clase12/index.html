@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Agrego css por ejemplo de boostrap ACA -->
+    <!-- PREVIO a MI propio CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>DOM</title>
+</head>
+<body>
+    
+    <h1 class="title">Hoy jugamos con EVENTOS</h1>
+
+    <div >CLICKKKK</div>
+
+    <div class="validate">
+        <form id="formulario" action="">
+            <input type="text" placeholder="Nombre de usuario" value="">
+            <input type="password" placeholder="Constraseña" value="">
+            <input type="submit" value="Enviar">
+        </form>
+        <p class="errorFormulario"></p>
+    </div>
+
+    <div class="eventos">
+        <div class="click">
+            <span class="less">-</span>
+            <span class="resultado">click</span>
+            <span class="more">+</span>
+        </div>
+        <div class="doubleClick">
+            <span>double click</span>
+            <iframe class="giphy notShow" src="https://giphy.com/embed/ui1hpJSyBDWlG" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        </div>
+        <div class="mouseOut"></div>
+        <div class="mouseOver"></div>
+        <div class="keyup">keyup</div>
+        <div class="keydown">keydown</div>
+        <div class="sweetAlert">Sweet Alert</div>
+        <div class="notification">Toastify</div>
+        <div class="luxon">Luxon</div>
+    </div>
+
+    <!-- JS - librerias -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
+    <!-- JS propio -->
+    <script src="js/index.js"></script>
+</body>
+</html>
