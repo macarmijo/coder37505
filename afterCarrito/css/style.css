@@ -115,16 +115,45 @@ img{
     height: 100%;
     text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .popupDetalle>div{
-    background-color: white;
+    background-image: url('https://marketplace.canva.com/EAFGKWZ7S3c/1/0/1600w/canva-fondo-de-pantalla-caritas-felices-aesthetic-gradiente-morado-y-rosa-yuWW9A_crYQ.jpg');
     width: 50%;
-    padding: 20px 20px 50px;
+    padding: 20px;
+    border-radius: 10px;
 }
+.product-detail .imagen{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
 .closePopup{
     text-align: end;
+    width: 100%;
+}
+.product-detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.descripcion-detail .click{
+    margin: 10px 0
+}
+.descripcion-detail .click .resultado{
+    margin: 0 10px
+}
+.descripcion-detail .click .less, .descripcion-detail .click .more{
+    border: 2px solid rgb(122, 152, 162);
+    background-color: lightblue;
+    border-radius: 50%;
+    padding: 3px 7px;
 }
 .d-none{
     display: none;
